@@ -54,13 +54,14 @@ const data = [
         "icon" : <Icon name = "category" size = {35} color = "#05c7f2"/>
     },
     {
-        "name" : 'Mutual',
+        "name" : 'Goals',
         "icon" : <Icon name = "account-balance-wallet" size = {35} color = "#05c7f2"/>
     },
+    /*
     {
         "name" : 'Bank',
         "icon" : <Icon name = "account-balance" size = {35} color = "#05c7f2"/>
-    },
+    },*/
     {
         "name" : 'Profile',
         "icon" : <Icon name = "admin-panel-settings" size = {35} color = "#05c7f2"/>
