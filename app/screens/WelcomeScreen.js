@@ -9,7 +9,9 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 export default function WelcomeScreen({navigation}) {
     
     const checkStatus = async() =>{
+      
       const data = await AsyncStorage.getItem('Data');
+      /*
       if(data !== null)
       {
         console.log("Data is present");
@@ -20,21 +22,22 @@ export default function WelcomeScreen({navigation}) {
 
         const ConsentHandle = await AsyncStorage.getItem('ConsentHandle');
         const ConsentId = await AsyncStorage.getItem('ConsentId');
-        
+        const Phone = await AsyncStorage.getItem('Phone');
+
         console.log("Time:",minutesDifference);
         
         if(minutesDifference>61)
         {
           setTimeout(()=>{
-            navigation.navigate('Fetch',{ConsentHandle:ConsentHandle,ConsentId:ConsentId});
+            navigation.navigate('Fetch',{Phone:Phone,ConsentHandle:ConsentHandle,ConsentId:ConsentId});
           },3000);
         }
         else
-        {
+        {*/
           setTimeout(()=>{
             navigation.navigate('Dashboard',{Data:data});
           },3000);  
-        }
+        /*}
       }
       else
       {
@@ -42,7 +45,7 @@ export default function WelcomeScreen({navigation}) {
         setTimeout(()=>{
           navigation.navigate('Info')
         },3000);
-      }
+      }*/
     }
 
     useEffect( () => {

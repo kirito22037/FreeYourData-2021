@@ -89,12 +89,15 @@ const Styles = StyleSheet.create({
     headline: {
         // flex: 1,
         backgroundColor: '#05c7f2',
-        height: '7%',
+        height: 50,
         textAlign: 'center',
         textAlignVertical: 'center',
         fontSize: 20,
-        borderTopLeftRadius: 30,
-        borderTopRightRadius: 30
+        //borderTopLeftRadius: 30,
+        //borderTopRightRadius: 30
+        borderRadius: 30,
+        color:'white',
+        marginTop:10
     },
     content: {
         // flex: 1,

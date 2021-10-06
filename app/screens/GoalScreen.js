@@ -1,40 +1,33 @@
 import React , { useState , useEffect } from 'react';
-import {View , Text , StyleSheet, FlatList , SafeAreaView, TouchableOpacity, Modal, TextInput} from 'react-native';
+import {View , Text , StyleSheet, FlatList , SafeAreaView, TouchableOpacity, Modal, TextInput,ScrollView} from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import GoalDetails from '../components/goalDetails';
+import GestureFlipView from 'react-native-gesture-flip-card';
+import GestureRecognizer, {swipeDirections} from 'react-native-swipe-gestures';
+import PieChart from 'react-native-pie-chart';
 
-
-const data = [
+const Ongoingdata = [
     {
-        'GoalName'  : 'Car Loan',
-        'startDate' : '20/20/20',
-        'endDate'   : '30/20/20',
-        'Amount'    : '20000',
-        'AmountLeft': '11000',
+        'GoalName'  : 'Buy Car',
+        'startDate' : '20 Jan,2021',
+        'endDate'   : '20 Jan,2023',
+        'Amount'    : '4,00,000',
+        'AmountSubmitted': '1,10,000',
         'Status'    : 'On-Going'
     },
     {
-        'GoalName'  : 'Home Loan',
-        'startDate' : '20/20/20',
-        'endDate'   : '30/20/20',
-        'Amount'    : '20000',
-        'AmountLeft': '11000',
-        'Status'    : 'Completed'
-    },
-    {
-        'GoalName'  : 'Tuition Fees',
-        'startDate' : '20/20/20',
-        'endDate'   : '30/20/20',
-        'Amount'    : '20000',
-        'AmountLeft': '11000',
-        'Status'    : 'On-going'
-    }
-]
+        'GoalName'  : 'Buy Home',
+        'startDate' : '20 Jan,2021',
+        'endDate'   : '10 Oct,2024',
+        'Amount'    : '20,00,000',
+        'AmountSubmitted':'50,000',
+        'Status'    : 'On-Going'
+    }]
 
 const formFields = [
     {
         'ITitle' : 'Goal Name',
-        'IPlaceHolder' : 'xyz',
+        'IPlaceHolder' : 'Pay fees...',
         'IKeyBoardType': 'default',
         'Iname': 'GoalName'
     },
@@ -45,14 +38,8 @@ const formFields = [
         'Iname': 'Amount'
     },
     {
-        'ITitle' : 'Start Date',
-        'IPlaceHolder' : '00/00/00',
-        'IKeyBoardType': 'default',
-        'Iname': 'startDate'
-    },
-    {
         'ITitle' : 'End Date',
-        'IPlaceHolder' : '00/00/00',
+        'IPlaceHolder' : '31 Dec 2025',
         'IKeyBoardType': 'default',
         'Iname': 'endDate'
     }
@@ -60,13 +47,25 @@ const formFields = [
 
 export default function GoalScreen({ navigation }) {
 
-    const [goalData , setGoalData] = useState(data);
+    var viewref = [{
+        current:null
+    },{
+        current:null
+    },{
+        current:null
+    }]
+
+    const [goalData , setGoalData] = useState(Ongoingdata);
+
     const [goalIndex , setGoalIndex] = useState(0);
     const [modalVisible , setModalVisible] = useState(false);
     const [goalInDetail , setGoalInDetail] = useState(false);
-
+    const Month = ["Jan","Feb","March","April","May","June","July","Aug","Sept","Oct","Nov","Dec"]
+    const datenow = new Date();
+    const date = datenow.getDate() + ' ' + Month[datenow.getMonth()] + ',' + datenow.getFullYear();
     //Form-Data
-    const [goal , setGoal] = useState({'GoalName':'','startDate':'','endDate':'','Amount':'','Status':'On-going'});
+
+    const [goal , setGoal] = useState({'GoalName':'','startDate':date,'endDate':'','Amount':'','Status':'On-going','AmountSubmitted': '0'});
     const HandleSubmit = () => {
         setGoalData(oldGoalData => [...oldGoalData , goal]);
         setGoal({'GoalName':'','startDate':'','endDate':'','Amount':''});
@@ -79,58 +78,57 @@ export default function GoalScreen({ navigation }) {
     }
 
     const openDetailGoalModal = (index) => {
+        setGoalIndex(index);
         setGoalInDetail(true);
-        setGoalIndex(index);        
     }
+    const widthAndHeight = 170
+    const series = [[28, 100],[3,100],[0,100]]
+    const sliceColor = ['#F44336','#2196F3']
 
-    useEffect(() => {
-        setGoalData(data);
-      }, []);
+    const renderFront = (index) => {
+        return (
+          <View style = {styles.frontStyle}>
+            <TouchableOpacity style={styles.ButtonStyle}><Text style={styles.buttonTextStyle}>Add to this Goal{' >>'}</Text></TouchableOpacity>
+          </View>
+        );
+      };
+      
+    const renderBack = (index) => {
     return (
-        <View style = {styles.container}>
-            <Text style = {styles.headline}> Your Goal's! </Text>
-            <SafeAreaView style = {{ marginTop: 10 , borderBottomWidth: 1 , paddingBottom: 10 , borderRadius: 40}}>
-                <FlatList
-                    data = {goalData}
-                    renderItem={({item , index}) => (
-                        <TouchableOpacity style={{
-                            flex: 1,
-                            flexDirection: 'column',
-                            margin: 1,
-                            padding: 5,
-                            borderWidth: 2,
-                            borderTopRightRadius: 40
-                            }} 
-                            key = {index}
-                            onPress = {() => openDetailGoalModal(index)}
-                        >
-                            <View style = {{flexDirection:'row'}}>
-                                <Text style = {styles.goalBlock}> 
-                                    {item.GoalName} 
-                                </Text>
-                                <View style = {{flex: 1}}>
-                                {
-                                    item.Status === 'Completed' ? 
-                                    <Icon name = "verified" size = {22} color = 'green' style = {styles.icons}/>
-                                    :
-                                    <Icon name = "pending-actions" size = {22} color = 'blue' style = {styles.icons}/>
-                                }
-                                </View>
-                            </View>
-                            <View style = {{ flexDirection: 'row'}}>
-                                <Text style = {{ flex: 1 , textAlign: 'center'}}> Goal Amount <Text style = {{color : 'red'}}> {item.Amount} </Text>  </Text>
-                                <Text style = {{ flex: 1 , textAlign: 'center'}}>  Goal Completed <Text style = {{color : 'green'}}> {item.Amount} </Text></Text>
-                            </View>
-                            <View style = {{ flexDirection: 'row'}}>
-                                <Text style = {{ flex: 1 , textAlign: 'center'}}> Start Date <Text style = {{color : 'red'}}> {item.startDate} </Text></Text>
-                                <Text style = {{ flex: 1 , textAlign: 'center'}}> End Date <Text style = {{color : 'green'}}> {item.endDate} </Text></Text>
-                            </View>
+        <View style = {styles.backStyle}>
+            <Text style={styles.name}>{goalData[index].GoalName}</Text>
+            <PieChart style={styles.chart}
+            widthAndHeight={widthAndHeight}
+            series={series[index]}
+            sliceColor={sliceColor}
+            doughnut={true}
+            coverRadius={0.55}
+          />
+          <Text style={styles.amount}>₹ {goalData[index].AmountSubmitted} out of ₹{goalData[index].Amount}</Text>
+          <Text style={styles.swipe}>Swipe to add money to this goal!</Text>  
+        </View>
+    );
+    };
+    const config = {
+        velocityThreshold: 0.3,
+        directionalOffsetThreshold: 80
+      };
+
+    return (
+        <ScrollView style = {styles.container}>
+          <Text style = {styles.headline}> Your Goals </Text>
+            <SafeAreaView style = {styles.cardContainer}>
+                {goalData.map((item,index)=>(
+                    <GestureRecognizer key = {index} config={config} onSwipeLeft = {()=>{viewref[index].current.flipLeft()}} onSwipeRight = {()=>{viewref[index].current.flipRight()}}>
+                        <TouchableOpacity onPress = {() => openDetailGoalModal(index)} key = {index.toString()} >
+                            <GestureFlipView width={350} height={370}  ref= {(ref) => (viewref[index].current = ref)}>
+                                {renderBack(index)}
+                                {renderFront(index)}
+                            </GestureFlipView>
                         </TouchableOpacity>
-                    )}
-                    numColumns={1}
-                    keyExtractor={(index) => index}
-                />
-            </SafeAreaView>
+                    </GestureRecognizer>    
+                    ))}
+                </SafeAreaView>
             <Modal
                 animationType="fade"
                 transparent={false}
@@ -150,7 +148,7 @@ export default function GoalScreen({ navigation }) {
                             {
                                 formFields.map((field , idx) => {
                                     return(
-                                        <View style = {{flexDirection: 'row' , padding: 10 , borderBottomWidth : 2 , borderRadius: 50}} key = {idx}>
+                                        <View style = {{flexDirection: 'row' , padding: 10 , borderBottomWidth : 2 , borderRadius: 50}} key = {idx.toString()}>
                                             <Text style = {{ flex: 1 , textAlign: 'center' , textAlignVertical: 'center'}}> {field.ITitle}  </Text>
                                             <TextInput
                                                 placeholder = {field.IPlaceHolder}
@@ -163,12 +161,12 @@ export default function GoalScreen({ navigation }) {
                                 })
                             }
                         </View>
+                        <TouchableOpacity style={styles.cardContainer}>
                         <Text 
-                            style = {[styles.createButton , {padding: 10}]}
-                            onPress = {() => HandleSubmit()}
-                        >
+                            style = {[styles.SubmitButton , {padding: 10}]}
+                            onPress = {() => HandleSubmit()}>
                             Submit
-                        </Text> 
+                        </Text></TouchableOpacity> 
                     </TouchableOpacity>
                 </View>
             </Modal>
@@ -180,30 +178,78 @@ export default function GoalScreen({ navigation }) {
                     setGoalInDetail(false)
                 }}
             >
-                <GoalDetails data = {goalData[goalIndex]} closeModal = {setGoalInDetail}/>
+                <GoalDetails serial={goalIndex} data = {goalData[goalIndex]} closeModal = {setGoalInDetail}/>
             </Modal>
             <TouchableOpacity 
                 style = {styles.createButton}
-                onPress = {() => setModalVisible(true)}
-            >
-                <Text 
-                    style = {{ textAlign: 'center' , padding: 10 }}
-                > Create a New Goal! </Text>
+                onPress = {() => setModalVisible(true)}>
+                <Icon name = 'add' size = {40} color = "#05c7f2"/>
             </TouchableOpacity>
-        </View>
+        </ScrollView>
     )
 }
 
 const styles = StyleSheet.create({
     container: {
-        // backgroundColor: 'green',
         flex: 1,
-        flexDirection: 'column'
+        //flexDirection: 'row',
+        backgroundColor:'white',
+    },
+    name:{
+        fontSize:25,
+        color:"#0D79F7",
+        fontWeight:'600',
+        position:'absolute',
+        top:20
+      },
+      chart:{
+          position:'absolute',
+          top:70
+      },
+    amount:{
+        fontSize:20,
+        color:"#60A6F7",
+        fontWeight:'300',
+        position:'absolute',
+        bottom:60
+      },
+      swipe:{
+        fontSize:12,
+        color:"#97AEF8",
+        fontWeight:'300',
+        position:'absolute',
+        bottom:10
+      },
+    cardContainer:{
+        backgroundColor: 'white',
+        justifyContent: 'center',
+        alignItems: 'center',
+        marginTop:10,
+    },
+    frontStyle: {
+        width: 350,
+        height: 350,
+        justifyContent: 'center',
+        alignItems: 'center',
+        borderRadius: 20,
+      },
+      backStyle: {
+        width: 350,
+        height: 350,
+        justifyContent: 'center',
+        alignItems: 'center',
+        borderRadius: 20,
+        backgroundColor:'#B2FDF9'
     },
     headline: {
+        backgroundColor: '#05c7f2',
+        height: 50,
         textAlign: 'center',
         textAlignVertical: 'center',
-        fontSize: 20
+        fontSize: 20,
+        borderRadius: 30,
+        color:'white',
+        marginTop:10
     },
     goalBlock: {
         textAlign: 'center',
@@ -214,18 +260,36 @@ const styles = StyleSheet.create({
         flex:1
     },
     createButton: {
-        width: '50%',
+        width: 50,
+        height:40,
         alignSelf: 'center',
-        backgroundColor : '#05c7f2',
+        backgroundColor : '#A5E7FC',
         marginTop: 10,
+        marginBottom:50,
         borderRadius: 25,
-        textAlign: 'center', 
-        fontSize: 20
+        alignItems: 'center',
+    },
+    SubmitButton:{
+        color:'white',
+        backgroundColor:'#05c7f2',
+        width:210,
+        textAlign:'center',
+        padding:10,
+        borderRadius:15,
     },
     modalContainer: {
         flexDirection: 'column'
     },
-    icons: {
-        
+    ButtonStyle:{
+        backgroundColor:'#05c7f2',
+        width:200,
+        alignItems:'center',
+        padding:10,
+        borderRadius:15,
+    },
+    buttonTextStyle:{
+        fontSize:18,
+        fontWeight:'bold',
+        color:'#fff',
     }
 });
