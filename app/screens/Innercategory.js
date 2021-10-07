@@ -27,7 +27,7 @@ export default function InnerCategory ({navigation,route}) {
         }
     }
     const oldDateObj = new Date();
-    const timenow = new Date(oldDateObj.getTime() + 310*60000).toISOString().split('T')[1].substring(0,5);
+    const timenow = new Date(oldDateObj.getTime() + 328*60000).toISOString().split('T')[1].substring(0,5);
     
     
     const getLabel = (idx) => {
