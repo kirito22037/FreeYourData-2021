@@ -44,7 +44,7 @@ export default function GoalDetails({serial,data , closeModal}) {
     };
 
     return(
-        <ScrollView style = {{flexDirection: 'column' , backgroundColor : '#f7f7f7' , flex : 1 , padding: 10 , overflow: 'scroll'}}>
+        <ScrollView style = {{flexDirection: 'column' , backgroundColor : '#3AAFA9' , flex : 1 , padding: 10 , overflow: 'scroll'}}>
             <View style = {{flexDirection : 'row'}}>
                 <Text style = {styles.headline}> 
                     {data.GoalName}
@@ -62,7 +62,7 @@ export default function GoalDetails({serial,data , closeModal}) {
                     <Text style = {styles.box}> End Date: {data.endDate} </Text>
                 </View>
                 <Text
-                    style = {{fontSize: 20 , textAlign: 'center' , padding: 10 , backgroundColor: '#f8f7f7' , borderBottomWidth: 2 , borderRadius: 100}}
+                    style = {{fontSize: 20 , textAlign: 'center' , padding: 10 , backgroundColor: '#3AAFA9' , borderBottomWidth: 2 , borderRadius: 100}}
                 >Goal Amount - ₹{data.Amount} </Text>
             </View>
             <View style = {{flexDirection : 'column' , marginTop: 10 , flex: 1}}>
@@ -96,27 +96,31 @@ const styles = StyleSheet.create({
     headline: {
         textAlign: 'center',
         fontSize: 35,
-        backgroundColor: '#d4772a',
+        backgroundColor: '#B2FDF9',
         borderTopLeftRadius: 25,
         borderTopRightRadius: 25,
         flex:1,
     },
     box: {
-        backgroundColor: '#f7f7f7',
+        backgroundColor: '#B2FDF9',
         marginTop: 10, 
         flex: 1,
         fontSize: 14,
-        textAlignVertical: 'center'
+        textAlignVertical: 'center',
+        borderRadius: 5,
+        textAlign: 'center', 
+        marginLeft: 5, marginRight: 5
     }, 
     box2: {
         flex: 1 ,
         textAlign: 'center' , 
         padding: 10, 
         fontSize: 15 , 
-        backgroundColor: "#f7f7f7" , 
+        backgroundColor: "#B2FDF9" , 
         color: 'black' , 
         margin: 5,
-        borderRadius: 50,
+        borderBottomLeftRadius: 20,
+        borderTopRightRadius:20,
         borderBottomWidth: 2
     },
     ButtonStyle:{

@@ -1,5 +1,5 @@
 import React , { useState , useEffect } from 'react';
-import {View , Text , StyleSheet, FlatList , SafeAreaView, TouchableOpacity, Modal, TextInput,ScrollView, TouchableNativeFeedback} from 'react-native';
+import {View , Text , StyleSheet, FlatList , SafeAreaView, TouchableOpacity, Modal, TextInput,ScrollView} from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import GoalDetails from '../components/goalDetails';
 import GestureFlipView from 'react-native-gesture-flip-card';
@@ -120,12 +120,12 @@ export default function GoalScreen({ navigation }) {
             <SafeAreaView style = {styles.cardContainer}>
                 {goalData.map((item,index)=>(
                     <GestureRecognizer key = {index} config={config} onSwipeLeft = {()=>{viewref[index].current.flipLeft()}} onSwipeRight = {()=>{viewref[index].current.flipRight()}}>
-                        <TouchableNativeFeedback onPress = {() => openDetailGoalModal(index)} key = {index.toString()} >
+                        <TouchableOpacity onPress = {() => openDetailGoalModal(index)} key = {index.toString()} >
                             <GestureFlipView width={350} height={370}  ref= {(ref) => (viewref[index].current = ref)}>
                                 {renderBack(index)}
                                 {renderFront(index)}
                             </GestureFlipView>
-                        </TouchableNativeFeedback>
+                        </TouchableOpacity>
                     </GestureRecognizer>    
                     ))}
                 </SafeAreaView>
