@@ -43,9 +43,9 @@ export default function Category({ navigation }) {
     ]
     return(
         <SafeAreaView style = {Styles.container}>
-            <Text style = {Styles.headline}>
+            {/* <Text style = {Styles.headline}>
                 Categories
-            </Text>
+            </Text> */}
             <View style = {{flexDirection: 'row' , marginTop : 10}}>
                 <TouchableOpacity style = {Styles.token} onPress = {() => setLabelIndex(0)} ><Text style={ LabelIndex == 0 ? {'color':'#ffff','fontWeight':'bold'}: {'color':'black' }}>All</Text></TouchableOpacity>
                 <TouchableOpacity style = {Styles.token} onPress = {() => setLabelIndex(1)}><Text style={ LabelIndex == 1 ? {'color':'#ffff','fontWeight':'bold'}: {'color':'black' }}> 1 Yr </Text></TouchableOpacity>
@@ -53,7 +53,7 @@ export default function Category({ navigation }) {
                 <TouchableOpacity style = {Styles.token} onPress = {() => setLabelIndex(3)}><Text style={ LabelIndex == 3 ? {'color':'#ffff','fontWeight':'bold'}: {'color':'black' }}> 1 Mon </Text></TouchableOpacity>
                 <TouchableOpacity style = {Styles.token} onPress = {() => setLabelIndex(4)}><Text style={ LabelIndex == 4 ? {'color':'#ffff','fontWeight':'bold'}: {'color':'black' }}> 1 week </Text></TouchableOpacity>
             </View>
-            <ScrollView style = {Styles.content}>
+            <ScrollView style = {{ ...Styles.content, marginTop: 10 }}>
                 {
                     categories.map((category , idx) => {
                         return(
@@ -85,7 +85,7 @@ const Styles = StyleSheet.create({
     container: {
         flexDirection: 'column',
         height: '100%',
-        backgroundColor: '#85dcbb',
+        //backgroundColor: '#85dcbb',
         padding: 5
     },
     headline: {
@@ -103,7 +103,7 @@ const Styles = StyleSheet.create({
     },
     content: {
         // flex: 1,
-        backgroundColor: '#f7f7f7',
+        //backgroundColor: '#f7f7f7',
         // height: '85%',
         marginTop: 5,
         flexDirection: 'column'
@@ -111,16 +111,19 @@ const Styles = StyleSheet.create({
     token: {
         flex: 1 , 
         alignItems:'center',
-        backgroundColor: '#05c7f2',
+        //backgroundColor: '#05c7f2',
+        //backgroundColor: "#44b356",
+        backgroundColor: "#f29950",
         marginLeft: 2,
         marginRight: 2,
         padding: 5,
-        borderBottomRightRadius: 10
+        //borderBottomRightRadius: 10
+        borderRadius: 10
     },
     categoryName: {
         flexDirection: 'row',
         padding: 10,
         borderBottomWidth: 0.3,
-        borderRadius: 20,
+        borderRadius: 10,
     }
 });

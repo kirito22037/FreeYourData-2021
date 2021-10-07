@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {ScrollView, StyleSheet, Text, View , Dimensions,Image, FlatList , Switch, TextInput, TouchableHighlight, TouchableOpacity } from 'react-native';
 import {
     LineChart
@@ -7,6 +7,10 @@ import Toast from 'react-native-toast-message';
 
 
 export default function InnerCategory ({navigation,route}) {
+
+    useEffect(()=>{
+        navigation.setOptions({ title: route.params.Name });
+    },[]);
 
     const [isEnabled, setIsEnabled] = useState(false);
     const [LabelIndex,setLabelIndex] = useState(0);
@@ -73,11 +77,11 @@ export default function InnerCategory ({navigation,route}) {
     
     return(
         <View style = {styles.container}>
-            <Text style = {styles.headline}> {route.params.Name} </Text>
+            {/* <Text style = {styles.headline}> {route.params.Name} </Text> */}
             <ScrollView style = {{ overflow: 'scroll' , flex: 1}}>
                 <View style = {styles.body}>
-                    <Text style = {{ flex: 1}}> Period </Text>
-                    <Text style = {{ flex: 2 , textAlign: 'right'}}>Last Refreshed Today @ {timenow}</Text>
+                    <Text style = {{ flex: 1, color: "#545454"}}> Period </Text>
+                    <Text style = {{ flex: 2 , textAlign: 'right', color: "#545454" }}>Last Refreshed Today @ {timenow}</Text>
                 </View>
                 <View style = {{flexDirection: 'row' , marginTop : 10}}>
                     <TouchableOpacity style = {styles.token} onPress = {() => setLabelIndex(0)} ><Text style={ LabelIndex == 0 ? {'color':'#ffff','fontWeight':'bold'}: {'color':'black' }}>All</Text></TouchableOpacity>
@@ -130,9 +134,9 @@ export default function InnerCategory ({navigation,route}) {
                 borderRadius: 16
                 }}
             />
-            <View style = {{ flexDirection: 'column' , backgroundColor: '#3AB9A9' , padding: 2 , borderRadius: 15}}>
+            <View style = {{ flexDirection: 'column' , backgroundColor: '#dcdee0' , paddingVertical: 20, paddingHorizontal:10,  borderRadius: 15}}>
                 <Text style = {{ fontSize: 15 }}> Monthly Budget </Text>
-                <View style = {{ flexDirection: 'row' , marginTop: 10 , backgroundColor: '#3AB9A9'}}>
+                <View style = {{ flexDirection: 'row' , marginTop: 10 }}>
                     <Text style = {styles.textChild}> Min Spend {'\n'} ₹ {Math.floor(Math.random() * 1000)+100} </Text>
                     <Text style = {styles.textChild}> Max Spend {'\n'} ₹ {Math.floor(Math.random() * 10000)+2000} </Text>
                     <Text style = {styles.textChild}> Avg Spend {'\n'} ₹ {Math.floor(Math.random() * 5000)+2500} </Text>
@@ -161,10 +165,10 @@ export default function InnerCategory ({navigation,route}) {
 
 const styles = StyleSheet.create({
     container: {
-        top:25,
+        //top:25,
         padding: 5,
         flex: 1,
-        backgroundColor : '#85dcbb'
+        //backgroundColor : '#85dcbb'
     },
     headline: {
         textAlign: 'center',
@@ -172,27 +176,33 @@ const styles = StyleSheet.create({
         fontSize: 20,
         marginBottom: 10,
         backgroundColor: '#3AA5A9',
-        borderBottomLeftRadius: 20,
-        borderBottomRightRadius: 20,
+        //borderBottomLeftRadius: 20,
+        //borderBottomRightRadius: 20,
+        borderRadius: 10,
         width: '90%',
         alignSelf: 'center',
         elevation: 7
     },
     body: {
-        backgroundColor: '#f7f7f7',
+        //backgroundColor: '#f7f7f7',
         padding: 3,
-        borderBottomRightRadius: 10,
+        //borderBottomRightRadius: 10,
+        //borderRadius: 10,
         flexDirection: 'row',
-        elevation: 5
+        //elevation: 5
     },
     token: {
         flex: 1 , 
         textAlign: "center",
-        backgroundColor: '#05c7f2',
+        //backgroundColor: '#05c7f2',
+        backgroundColor: "#f29950",
         marginLeft: 2,
         marginRight: 2,
         padding: 5,
-        borderBottomRightRadius: 10
+        //borderBottomRightRadius: 10
+        borderRadius: 10,
+        //textAlign: "center"
+        alignItems: "center"
     },
     textChild: {
         flex: 1,
@@ -201,17 +211,20 @@ const styles = StyleSheet.create({
         paddingTop: 10,
         marginLeft: 2,
         marginRight: 2,
-        backgroundColor: '#05c7f2',
+        //backgroundColor: '#05c7f2',
+        backgroundColor: "#f29950",
         borderRadius: 10,
         elevation: 5
     },
     txnRows: {
-        backgroundColor: '#def2f1',
+        //backgroundColor: '#def2f1',
+        backgroundColor: "#d6efff",
         marginTop: 10,
         flexDirection: 'row',
-        borderTopRightRadius: 30,
+        //borderTopRightRadius: 30,
+        borderRadius: 10,
         padding: 10,
-        elevation: 5
+        elevation: 3
     }
 });
 

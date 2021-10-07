@@ -1,3 +1,4 @@
+//NO NEED OF THIS SCREEN
 import React , { useState } from 'react';
 import {StyleSheet , StatusBar, SafeAreaView, View} from 'react-native';
 
@@ -8,7 +9,7 @@ import DashboardScreen from './DashboardScreen';
 import Profile from './Profile';
 import GoalScreen from './GoalScreen';
 
-export default function Dashboard( {navigation,route} ) {
+export default function Dashboard( {navigation} ) {
     const [Route , setRoute] = useState(0);
     const getChildView = (idx) => {
       switch(idx) {
@@ -22,7 +23,7 @@ export default function Dashboard( {navigation,route} ) {
             <View style = {styles.container}>
               <StatusBar
                 animated={true}
-                backgroundColor="#61dafb"
+                backgroundColor="#34a4eb"
               />
               <View style = {styles.containerBody}>
                 <NavBar setIndex = {setRoute} />
@@ -38,8 +39,8 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         flexDirection: 'column-reverse',
-        top:-20,
-        backgroundColor: "green",
+        //top:-20,
+        //backgroundColor: "green",
         padding: 0,
         margin: 0
     },

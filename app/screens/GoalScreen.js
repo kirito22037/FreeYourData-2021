@@ -116,7 +116,7 @@ export default function GoalScreen({ navigation }) {
 
     return (
         <ScrollView style = {styles.container}>
-            <Text style = {styles.headline}> Your Goals </Text>
+            {/* <Text style = {styles.headline}> Your Goals </Text> */}
             <SafeAreaView style = {styles.cardContainer}>
                 {goalData.map((item,index)=>(
                     <GestureRecognizer key = {index} config={config} onSwipeLeft = {()=>{viewref[index].current.flipLeft()}} onSwipeRight = {()=>{viewref[index].current.flipRight()}}>
