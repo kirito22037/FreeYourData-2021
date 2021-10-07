@@ -50,26 +50,26 @@ export default function GoalDetails({serial,data , closeModal}) {
                     }
                 </Text>
             </View>
-            <View style = {{ flexDirection: 'column' , backgroundColor: 'white'}}>
+            <View style = {{ flexDirection: 'column'}}>
                 <View style = {{flexDirection : 'row'}}>
                     <Text style = {styles.box}> Start Date: {data.startDate} </Text>
                     <Text style = {styles.box}> End Date: {data.endDate} </Text>
                 </View>
                 <Text
-                    style = {{fontSize: 20 , textAlign: 'center' , padding: 10}}
+                    style = {{fontSize: 20 , textAlign: 'center' , padding: 10 , backgroundColor: '#f8f7f7' , borderBottomWidth: 2 , borderRadius: 100}}
                 >Goal Amount - ₹{data.Amount} </Text>
             </View>
             <View style = {{flexDirection : 'column' , marginTop: 10 , flex: 1}}>
-                <Text style = {{fontSize: 17}}> Deposit Analysis </Text>
+                <Text style = {{fontSize: 15 , color: 'black'}}> Deposit Analysis </Text>
                 <BarChart
-                    style={{paddingBottom: 5 , marginTop: 10 , borderRadius: 15}}
-                    data={BarGraphdata[serial]}
-                    width={Dimensions.get('window').width - 20}
-                    height={220}
-                    yAxisLabel="₹ "
-                    yAxisSuffix="k"
-                    chartConfig={chartConfig}
-                    verticalLabelRotation={30}
+                        style={{paddingBottom: 5 , marginTop: 10 , borderRadius: 15}}
+                        data={BarGraphdata[serial]}
+                        width={Dimensions.get('window').width - 20}
+                        height={220}
+                        yAxisLabel="₹ "
+                        yAxisSuffix="k"
+                        chartConfig={chartConfig}
+                        verticalLabelRotation={30}
                     />
             </View>
             <View style = {{flex : 1 , flexDirection: 'column' , padding : 10}}>
