@@ -27,7 +27,7 @@ export default function InnerCategory ({navigation,route}) {
         }
     }
     const oldDateObj = new Date();
-    const timenow = new Date(oldDateObj.getTime() + 310*60000).toISOString().split('T')[1].substring(0,5);
+    const timenow = new Date(oldDateObj.getTime() + 328*60000).toISOString().split('T')[1].substring(0,5);
     
     
     const getLabel = (idx) => {
@@ -42,7 +42,7 @@ export default function InnerCategory ({navigation,route}) {
 
     const getTransactionRows = () => {
         return(
-            <View style = {{ flex: 1 }}>
+            <View style = {{flex: 1 , flexDirection: 'column'}}>
                 { 
                     dummyData[route.params.Type].map((txn , idx) => {
                         return(
@@ -74,7 +74,7 @@ export default function InnerCategory ({navigation,route}) {
     return(
         <View style = {styles.container}>
             <Text style = {styles.headline}> {route.params.Name} </Text>
-            <ScrollView style = {{ overflow: 'scroll'}}>
+            <ScrollView style = {{ overflow: 'scroll' , flex: 1}}>
                 <View style = {styles.body}>
                     <Text style = {{ flex: 1}}> Period </Text>
                     <Text style = {{ flex: 2 , textAlign: 'right'}}>Last Refreshed Today @ {timenow}</Text>
@@ -115,7 +115,8 @@ export default function InnerCategory ({navigation,route}) {
                 color: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
                 labelColor: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
                 style: {
-                    borderRadius: 16
+                    borderRadius: 16,
+                    elevation: 10
                 },
                 propsForDots: {
                     r: "6",
@@ -129,9 +130,9 @@ export default function InnerCategory ({navigation,route}) {
                 borderRadius: 16
                 }}
             />
-            <View style = {{ flexDirection: 'column' , backgroundColor: '#f7f7f7' , padding: 2 , borderRadius: 15}}>
+            <View style = {{ flexDirection: 'column' , backgroundColor: '#3AB9A9' , padding: 2 , borderRadius: 15}}>
                 <Text style = {{ fontSize: 15 }}> Monthly Budget </Text>
-                <View style = {{ flexDirection: 'row' , marginTop: 10 , backgroundColor: '#f7f7f7'}}>
+                <View style = {{ flexDirection: 'row' , marginTop: 10 , backgroundColor: '#3AB9A9'}}>
                     <Text style = {styles.textChild}> Min Spend {'\n'} ₹ {Math.floor(Math.random() * 1000)+100} </Text>
                     <Text style = {styles.textChild}> Max Spend {'\n'} ₹ {Math.floor(Math.random() * 10000)+2000} </Text>
                     <Text style = {styles.textChild}> Avg Spend {'\n'} ₹ {Math.floor(Math.random() * 5000)+2500} </Text>
@@ -162,19 +163,27 @@ const styles = StyleSheet.create({
     container: {
         top:25,
         padding: 5,
-        flex: 1
+        flex: 1,
+        backgroundColor : '#85dcbb'
     },
     headline: {
         textAlign: 'center',
         padding: 10,
         fontSize: 20,
-        marginBottom: 10
+        marginBottom: 10,
+        backgroundColor: '#3AA5A9',
+        borderBottomLeftRadius: 20,
+        borderBottomRightRadius: 20,
+        width: '90%',
+        alignSelf: 'center',
+        elevation: 7
     },
     body: {
         backgroundColor: '#f7f7f7',
         padding: 3,
-        borderBottomRightRadius: 20,
-        flexDirection: 'row'
+        borderBottomRightRadius: 10,
+        flexDirection: 'row',
+        elevation: 5
     },
     token: {
         flex: 1 , 
@@ -194,14 +203,15 @@ const styles = StyleSheet.create({
         marginRight: 2,
         backgroundColor: '#05c7f2',
         borderRadius: 10,
+        elevation: 5
     },
     txnRows: {
-        backgroundColor: '#f7f7f7',
+        backgroundColor: '#def2f1',
         marginTop: 10,
         flexDirection: 'row',
         borderTopRightRadius: 30,
-        padding: 10
-        
+        padding: 10,
+        elevation: 5
     }
 });
 

@@ -84,7 +84,9 @@ export default function Category({ navigation }) {
 const Styles = StyleSheet.create({
     container: {
         flexDirection: 'column',
-        height: '100%'
+        height: '100%',
+        backgroundColor: '#85dcbb',
+        padding: 5
     },
     headline: {
         // flex: 1,

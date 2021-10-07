@@ -11,7 +11,7 @@ export default function WelcomeScreen({navigation}) {
     const checkStatus = async() =>{
       
       const data = await AsyncStorage.getItem('Data');
-      /*
+      
       if(data !== null)
       {
         console.log("Data is present");
@@ -33,11 +33,11 @@ export default function WelcomeScreen({navigation}) {
           },3000);
         }
         else
-        {*/
+        {
           setTimeout(()=>{
             navigation.navigate('Dashboard',{Data:data});
           },3000);  
-        /*}
+        }
       }
       else
       {
@@ -45,7 +45,7 @@ export default function WelcomeScreen({navigation}) {
         setTimeout(()=>{
           navigation.navigate('Info')
         },3000);
-      }*/
+      }
     }
 
     useEffect( () => {

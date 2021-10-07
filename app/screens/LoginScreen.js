@@ -27,7 +27,7 @@ export default function LoginScreen({navigation}) {
             Check if consent with number is already there
         */
         const data = await AsyncStorage.getItem(phone);
-        if(data!=null)
+        if(data !== null)
         {
             console.log('Already Consent Present');
             setTimeout(()=>{

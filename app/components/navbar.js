@@ -1,8 +1,9 @@
-import React from 'react';
-import { StyleSheet, Button , View , Alert, TouchableOpacity} from 'react-native';
+import React,{useState} from 'react';
+import { StyleSheet, Button , View , Alert, TouchableOpacity,Text} from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
 export default function NavBar({ setIndex }) {
+    const [selected,Setselected] = useState(0);
     return(
         <View style = {styles.container}>
             {
@@ -10,12 +11,13 @@ export default function NavBar({ setIndex }) {
                     return(
                         <TouchableOpacity
                             key = {idx} 
-                            style = {styles.childElements} 
-                            onPress = {() => setIndex(idx)}
+                            style = {{flex: 1,alignItems: 'center'}} 
+                            onPress = {() => {setIndex(idx);Setselected(idx)}}
                         >
                             <View>
                                 {item.icon}
                             </View>
+                            <Text style={styles.name}>{item.name}</Text>
                         </TouchableOpacity>
                     )
                 })
@@ -31,16 +33,17 @@ const styles = StyleSheet.create({
         padding: 10,
         borderWidth:2,
         borderRadius:20,
-        borderColor:'#2255F9'
+        borderColor:'#2255F9',
+        elevation: 10
 
-    },
-    childElements: {
-        flex: 1,
-        alignItems: 'center',
-        //borderWidth: 1,
     },
     child: {
         textAlign: 'center'
+    },
+    name:{
+        fontSize:10,
+        fontWeight:'bold',
+        color:'#A9A9AB'
     }
 });
 

@@ -98,11 +98,11 @@ export default function GoalScreen({ navigation }) {
         <View style = {styles.backStyle}>
             <Text style={styles.name}>{goalData[index].GoalName}</Text>
             <PieChart style={styles.chart}
-            widthAndHeight={widthAndHeight}
-            series={series[index]}
-            sliceColor={sliceColor}
-            doughnut={true}
-            coverRadius={0.55}
+                widthAndHeight={widthAndHeight}
+                series={series[index]}
+                sliceColor={sliceColor}
+                doughnut={true}
+                coverRadius={0.55}
           />
           <Text style={styles.amount}>₹ {goalData[index].AmountSubmitted} out of ₹{goalData[index].Amount}</Text>
           <Text style={styles.swipe}>Swipe to add money to this goal!</Text>  
@@ -116,7 +116,7 @@ export default function GoalScreen({ navigation }) {
 
     return (
         <ScrollView style = {styles.container}>
-          <Text style = {styles.headline}> Your Goals </Text>
+            <Text style = {styles.headline}> Your Goals </Text>
             <SafeAreaView style = {styles.cardContainer}>
                 {goalData.map((item,index)=>(
                     <GestureRecognizer key = {index} config={config} onSwipeLeft = {()=>{viewref[index].current.flipLeft()}} onSwipeRight = {()=>{viewref[index].current.flipRight()}}>
@@ -193,7 +193,7 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         //flexDirection: 'row',
-        backgroundColor:'white',
+        backgroundColor:'#3AAFA9',
     },
     name:{
         fontSize:25,
@@ -221,10 +221,13 @@ const styles = StyleSheet.create({
         bottom:10
       },
     cardContainer:{
-        backgroundColor: 'white',
+        backgroundColor: '#85dcbb',
         justifyContent: 'center',
         alignItems: 'center',
         marginTop:10,
+        borderRadius: 20,
+        elevation: 100,
+        margin: 3.5
     },
     frontStyle: {
         width: 350,
@@ -232,6 +235,8 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         borderRadius: 20,
+        backgroundColor:'#B2FDF9',
+        borderRadius: 20
       },
       backStyle: {
         width: 350,
@@ -242,14 +247,19 @@ const styles = StyleSheet.create({
         backgroundColor:'#B2FDF9'
     },
     headline: {
-        backgroundColor: '#05c7f2',
+        backgroundColor: '#3AA5A9',
         height: 50,
         textAlign: 'center',
         textAlignVertical: 'center',
         fontSize: 20,
-        borderRadius: 30,
+        borderBottomRightRadius: 20,
+        borderBottomLeftRadius: 20,
         color:'white',
-        marginTop:10
+        marginTop:10, 
+        marginLeft: 10,
+        marginRight: 10,
+        borderBottomWidth: 2,
+        elevation: 15
     },
     goalBlock: {
         textAlign: 'center',

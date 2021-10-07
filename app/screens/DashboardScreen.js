@@ -2,11 +2,12 @@ import React from 'react';
 import { StyleSheet, Text, View, Dimensions,ScrollView } from 'react-native';
 import AccountDetail from '../components/accountDetail';
 import BarGraph from '../components/bargraph';
+import LinearGradient, { LinearGradientProps } from 'react-native-linear-gradient';
 export default function DashboardScreen() {
 
     const screenWidth = Dimensions.get("window").width-10;
     const oldDateObj = new Date();
-    const timenow = new Date(oldDateObj.getTime() + 310*60000).toISOString().split('T')[1].substring(0,5);
+    const timenow = new Date(oldDateObj.getTime() + 328*60000).toISOString().split('T')[1].substring(0,5);
     
 
     const Earningdata = {
@@ -30,7 +31,7 @@ export default function DashboardScreen() {
     
 
     return (
-        <ScrollView >
+        <ScrollView style={{}} >
             <Text style = {styles.headline}>
                 Dashboard
             </Text>
@@ -50,6 +51,7 @@ export default function DashboardScreen() {
             <BarGraph data={Spentdata} width={screenWidth} barColor='rgba(189, 58, 58, 1)' title="Money Going Out" labelColor="rgba(1, 122, 205, 1)" />
             
         </ScrollView>
+        
     )
 }
 
