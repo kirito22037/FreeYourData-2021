@@ -5,7 +5,7 @@ import BarGraph from '../components/bargraph';
 import LinearGradient, { LinearGradientProps } from 'react-native-linear-gradient';
 export default function DashboardScreen() {
 
-    const screenWidth = Dimensions.get("window").width-10;
+    const screenWidth = Dimensions.get("window").width-20;
     const oldDateObj = new Date();
     const timenow = new Date(oldDateObj.getTime() + 328*60000).toISOString().split('T')[1].substring(0,5);
     
@@ -28,14 +28,12 @@ export default function DashboardScreen() {
         ]
       };
 
-    
-
     return (
         <ScrollView style={{}} >
             <Text style = {styles.headline}>
                 Dashboard
             </Text>
-            <View style={ {...styles.card, padding: 20,marginTop:15} }>
+            <View style={ {...styles.card, padding: 20, marginTop:15, marginHorizontal: 5} }>
                 <View style = {styles.body}>
                     <Text style={styles.heading} >Account Balances</Text>
                     <Text style = {{ flex: 2 , textAlign: 'right',fontSize:10}}>Last Refreshed Today @ {timenow}</Text>
@@ -47,9 +45,23 @@ export default function DashboardScreen() {
                 </View>
             </View>
 
-            <BarGraph data={Earningdata} width={screenWidth} barColor='rgba(50, 168, 82, 1)' title="Money Coming In" labelColor="rgba(1, 122, 205, 1)" />
-            <BarGraph data={Spentdata} width={screenWidth} barColor='rgba(189, 58, 58, 1)' title="Money Going Out" labelColor="rgba(1, 122, 205, 1)" />
-            
+            <ScrollView 
+            horizontal={true} 
+            showsHorizontalScrollIndicator={false}
+            pagingEnabled={true}>
+                    <BarGraph data={Earningdata} width={screenWidth} barColor='rgba(50, 168, 82, 1)' title="Money Coming In Account A" labelColor="rgba(1, 122, 205, 1)" />
+                    <BarGraph data={Earningdata} width={screenWidth} barColor='rgba(50, 168, 82, 1)' title="Money Coming In Account B" labelColor="rgba(1, 122, 205, 1)" />
+                    <BarGraph data={Earningdata} width={screenWidth} barColor='rgba(50, 168, 82, 1)' title="Money Coming In Account " labelColor="rgba(1, 122, 205, 1)" />
+            </ScrollView>
+            <ScrollView 
+            horizontal={true}
+            showsHorizontalScrollIndicator={false}
+            pagingEnabled={true}>
+                <BarGraph data={Spentdata} width={screenWidth} barColor='rgba(189, 58, 58, 1)' title="Money Going Out" labelColor="rgba(1, 122, 205, 1)" />
+                <BarGraph data={Spentdata} width={screenWidth} barColor='rgba(189, 58, 58, 1)' title="Money Going Out" labelColor="rgba(1, 122, 205, 1)" />
+                <BarGraph data={Spentdata} width={screenWidth} barColor='rgba(189, 58, 58, 1)' title="Money Going Out" labelColor="rgba(1, 122, 205, 1)" />
+                <BarGraph data={Spentdata} width={screenWidth} barColor='rgba(189, 58, 58, 1)' title="Money Going Out" labelColor="rgba(1, 122, 205, 1)" />
+            </ScrollView>
         </ScrollView>
         
     )

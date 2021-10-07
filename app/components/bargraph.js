@@ -16,7 +16,7 @@ export default function BarGraph( {data, width, barColor,labelColor, title} ) {
         };
 
     return (
-        <View style={ {...styles.mt15, ...styles.card} } >
+        <View style={ {...styles.mt15, ...styles.card, marginHorizontal: 5} } >
                 <Text style={ {...styles.heading, padding: 20 } }> { title }</Text>
                 <BarChart 
                     style={ {borderRadius: 10} }
