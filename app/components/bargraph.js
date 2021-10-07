@@ -2,10 +2,10 @@ import React from 'react';
 import { StyleSheet, Text, View, Dimensions } from 'react-native';
 import { BarChart } from "react-native-chart-kit";
 
-export default function BarGraph( {data, width, barColor,labelColor, title} ) {
+export default function BarGraph( {data, width, barColor, title, gbgColor="#dcdee0"} ) {
     const chartConfig = {
-        backgroundGradientFrom: "#E7FBF9",
-        backgroundGradientTo: "#E7FBF9",
+        backgroundGradientFrom: gbgColor,
+        backgroundGradientTo: gbgColor,
         height:5000,
         fillShadowGradient: barColor, //`rgba(1, 122, 205, 1)`,
         fillShadowGradientOpacity: 1,
@@ -16,7 +16,7 @@ export default function BarGraph( {data, width, barColor,labelColor, title} ) {
         };
 
     return (
-        <View style={ {...styles.mt15, ...styles.card, marginHorizontal: 5} } >
+        <View style={ {...styles.mt15, ...styles.card, marginHorizontal: 10 } } >
                 <Text style={ {...styles.heading, padding: 20 } }> { title }</Text>
                 <BarChart 
                     style={ {borderRadius: 10} }
@@ -37,11 +37,14 @@ const styles = StyleSheet.create({
         marginTop: 15
     },
     card: {
-        width: Dimensions.get("window").width-10,
+        //width: Dimensions.get("window").width-10,
         borderStyle: 'dotted',
         borderColor: 'black',
         borderRadius: 10,
-        backgroundColor: "#DAFCFA"
+        backgroundColor: "#dcdee0",
+        flex:1,
+        alignContent: "center",
+        justifyContent: "center"
     },
     heading: {
         fontWeight: 'bold',

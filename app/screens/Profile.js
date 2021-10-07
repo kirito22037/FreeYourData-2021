@@ -53,7 +53,7 @@ export default function Profile({navigation}) {
 
 const styles = StyleSheet.create({
   header:{
-    backgroundColor: "#00BFFF",
+    backgroundColor: "#34a4eb",
     height:200,
   },
   ButtonLoader:{
@@ -91,12 +91,12 @@ const styles = StyleSheet.create({
   },
   info:{
     fontSize:16,
-    color: "#00BFFF",
+    color: "#34a4eb",
     marginTop:10
   },
   emailinfo:{
     fontSize:16,
-    color: "#00BFFF",
+    color: "#34a4eb",
     marginTop:10,
     marginBottom:20
   },
@@ -115,6 +115,6 @@ const styles = StyleSheet.create({
     marginBottom:20,
     width:250,
     borderRadius:30,
-    backgroundColor: "#00BFFF",
+    backgroundColor: "#34a4eb",
   },
 });
