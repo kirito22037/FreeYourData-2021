@@ -17,8 +17,14 @@ export default function GoalDetails({serial,data , closeModal}) {
           {
             data: [0, 0, 0, 0, 25, 25]
           }]
+    },{
+        labels: ["May", "June", "July","Aug", "Sept", "Oct"],
+        datasets: [
+          {
+            data: [0, 0, 0, 0, 0, 0]
+          }]
     }];
-    const goal = [27.5,2.5]
+    const goal = [27.5,2.5,0]
 
     const chartConfig = {
         backgroundColor: "#e26a00",
