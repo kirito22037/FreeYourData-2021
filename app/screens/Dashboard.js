@@ -1,5 +1,5 @@
 import React , { useState } from 'react';
-import {StyleSheet , View , StatusBar, SafeAreaView} from 'react-native';
+import {StyleSheet , StatusBar, SafeAreaView, View} from 'react-native';
 
 //Components
 import NavBar from '../components/navbar';
@@ -19,34 +19,37 @@ export default function Dashboard( {navigation,route} ) {
       }
     }
     return(
-        <SafeAreaView style = {styles.container}>
-            <StatusBar
-              animated={true}
-              backgroundColor="#61dafb"
-            />
-            <SafeAreaView style = {styles.containerBody}>
-              <NavBar setIndex = {setRoute} />
-            </SafeAreaView>
-            <SafeAreaView style = {styles.containerFooter}>
-              { getChildView(Route) }
-            </SafeAreaView>
-        </SafeAreaView>
-    )
+            <View style = {styles.container}>
+              <StatusBar
+                animated={true}
+                backgroundColor="#61dafb"
+              />
+              <View style = {styles.containerBody}>
+                <NavBar setIndex = {setRoute} />
+              </View>
+              <View style = {styles.containerFooter}>
+                { getChildView(Route) }
+              </View>
+            </View>
+    );
 }
 
 const styles = StyleSheet.create({
     container: {
         flex: 1,
         flexDirection: 'column-reverse',
-        top:-20
+        top:-20,
+        backgroundColor: "green",
+        padding: 0,
+        margin: 0
     },
     containerBody: {
-      margin:10,
+      marginBottom: 10,
       bottom:-10
     },
     containerFooter: {
       flex: 1,
-      padding:10,
+      //padding:10,
       alignSelf: 'stretch',
       overflow: 'hidden'
     }
