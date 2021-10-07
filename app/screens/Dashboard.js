@@ -15,7 +15,7 @@ export default function Dashboard( {navigation,route} ) {
         case 0 : return <DashboardScreen navigation = {navigation}/>
         case 1 : return <Category navigation = {navigation} />
         case 2 : return <GoalScreen navigation = {navigation}/>
-        case 4 : return <Profile navigation = {navigation} />
+        case 3 : return <Profile navigation = {navigation} />
       }
     }
     return(
