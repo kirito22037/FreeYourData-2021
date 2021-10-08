@@ -26,7 +26,7 @@ export default function WelcomeScreen({navigation}) {
 
         console.log("Time:",minutesDifference);
         
-        if(minutesDifference>61)
+        if(minutesDifference>70)//Only can fetch 1 times in 60 min, kept buffer of 10 min more
         {
           setTimeout(()=>{
             navigation.navigate('Fetch',{Phone:Phone,ConsentHandle:ConsentHandle,ConsentId:ConsentId});
@@ -35,7 +35,7 @@ export default function WelcomeScreen({navigation}) {
         else
         {
           setTimeout(()=>{
-            navigation.navigate('Dashboard',{Data:data});
+            navigation.navigate('TabNav');
           },3000);  
         }
       }

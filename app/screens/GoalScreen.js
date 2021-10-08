@@ -87,8 +87,7 @@ export default function GoalScreen({ navigation }) {
 
     const renderFront = (index) => {
         return (
-          <View style = {styles.frontStyle}>
-            <TouchableOpacity style={styles.ButtonStyle}><Text style={styles.buttonTextStyle}>Add to this Goal{' >>'}</Text></TouchableOpacity>
+          <View>
           </View>
         );
       };
@@ -105,7 +104,7 @@ export default function GoalScreen({ navigation }) {
                 coverRadius={0.55}
           />
           <Text style={styles.amount}>₹ {goalData[index].AmountSubmitted} out of ₹{goalData[index].Amount}</Text>
-          <Text style={styles.swipe}>Swipe to add money to this goal!</Text>  
+          <TouchableOpacity style={styles.ButtonStyle}><Text style={styles.buttonTextStyle}>Add to this Goal{' >>'}</Text></TouchableOpacity>
         </View>
     );
     };
@@ -119,14 +118,12 @@ export default function GoalScreen({ navigation }) {
             {/* <Text style = {styles.headline}> Your Goals </Text> */}
             <SafeAreaView style = {styles.cardContainer}>
                 {goalData.map((item,index)=>(
-                    <GestureRecognizer key = {index} config={config} onSwipeLeft = {()=>{viewref[index].current.flipLeft()}} onSwipeRight = {()=>{viewref[index].current.flipRight()}}>
                         <TouchableOpacity onPress = {() => openDetailGoalModal(index)} key = {index.toString()} >
                             <GestureFlipView width={350} height={370}  ref= {(ref) => (viewref[index].current = ref)}>
                                 {renderBack(index)}
                                 {renderFront(index)}
                             </GestureFlipView>
                         </TouchableOpacity>
-                    </GestureRecognizer>    
                     ))}
                 </SafeAreaView>
             <Modal
@@ -207,11 +204,11 @@ const styles = StyleSheet.create({
           top:70
       },
     amount:{
-        fontSize:20,
+        fontSize:15,
         color:"#60A6F7",
         fontWeight:'300',
         position:'absolute',
-        bottom:60
+        bottom:70
       },
       swipe:{
         fontSize:12,
@@ -296,6 +293,8 @@ const styles = StyleSheet.create({
         alignItems:'center',
         padding:10,
         borderRadius:15,
+        position:'absolute',
+        bottom:10
     },
     buttonTextStyle:{
         fontSize:18,

@@ -109,11 +109,18 @@ export default function FetchDataScreen({navigation,route}) {
 
                 if(typeof fetchreqres["errorCode"] != 'undefined')
                 {
+                    console.log("Data Fetching Error:");
                     Toast.show({
                         type: 'error',
                         text1: 'Data Fetching Failed!',
                         text2: 'Try Again!'
                       });
+                    await AsyncStorage.removeItem('ConsentHandle');
+                    await AsyncStorage.removeItem('ConsentId');
+                    await AsyncStorage.removeItem('Data');
+                    await AsyncStorage.removeItem('Phone');
+                    await AsyncStorage.removeItem(route.params.Phone);
+                    
                     navigation.navigate('Login')
                 }
                 else{
@@ -173,7 +180,7 @@ export default function FetchDataScreen({navigation,route}) {
                     SetStatus("Personalizing your Feed...");
                     
                     setTimeout(()=>{
-                        navigation.navigate('Dashboard',{Data:final_data});
+                        navigation.navigate('TabNav');
                     },4000);    
                 }    
             }
