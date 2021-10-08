@@ -32,7 +32,9 @@ export default function LoginScreen({navigation}) {
             console.log('Already Consent Present');
             setTimeout(()=>{
                 navigation.navigate('Fetch',{Phone:phone,ConsentHandle:data.split('<,>')[0],ConsentId:data.split('<,>')[1]});
+                SetLoader(false);
             },2000);
+            
         }
         else{
             /*
@@ -89,7 +91,7 @@ export default function LoginScreen({navigation}) {
                     },
                     "Frequency": {
                         "unit": "HOUR",
-                        "value": 99
+                        "value": 1
                     },
                 }
             }
