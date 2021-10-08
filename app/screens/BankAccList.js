@@ -8,7 +8,9 @@ export default function BankAccList({navigation, route}) {
         <View style={styles.p10}>
         { data.map( bankDetail => {
             return (
-                <TouchableOpacity onPress={()=>{ navigation.navigate('AccountDetails', bankDetail ); }}>
+                <TouchableOpacity 
+                key={ bankDetail.bankName }
+                onPress={()=>{ navigation.navigate('AccountDetails', bankDetail ); }}>
                     <View style={styles.bottomLine}>
                         <List.Item
                         id={ bankDetail.bankName }

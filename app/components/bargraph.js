@@ -3,7 +3,6 @@ import { StyleSheet, Text, View, Dimensions } from 'react-native';
 import { BarChart } from "react-native-chart-kit";
 
 export default function BarGraph( {data, width, barColor, title, gbgColor="#dcdee0"} ) {
-    console.log(data);
     const chartConfig = {
         backgroundGradientFrom: gbgColor,
         backgroundGradientTo: gbgColor,
