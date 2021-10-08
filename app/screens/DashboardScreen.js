@@ -56,9 +56,9 @@ export default function DashboardScreen() {
                 horizontal={true}
                 showsHorizontalScrollIndicator={false}
                 pagingEnabled={true}>
-                    <BarGraph data={Spentdata} width={screenWidth} barColor='rgba(189, 58, 58, 1)' title="Money Going Out In Account A" labelColor="rgba(1, 122, 205, 1)" />
-                    <BarGraph data={Spentdata} width={screenWidth} barColor='rgba(189, 58, 58, 1)' title="Money Going Out In Account B" labelColor="rgba(1, 122, 205, 1)" />
-                    <BarGraph data={Spentdata} width={screenWidth} barColor='rgba(189, 58, 58, 1)' title="Money Going Out In Account C" labelColor="rgba(1, 122, 205, 1)" />
+                    <BarGraph data={Spentdata} width={screenWidth} barColor='rgba(189, 58, 58, 1)' title="Money Going Out from Account A" labelColor="rgba(1, 122, 205, 1)" />
+                    <BarGraph data={Spentdata} width={screenWidth} barColor='rgba(189, 58, 58, 1)' title="Money Going Out from Account B" labelColor="rgba(1, 122, 205, 1)" />
+                    <BarGraph data={Spentdata} width={screenWidth} barColor='rgba(189, 58, 58, 1)' title="Money Going Out from Account C" labelColor="rgba(1, 122, 205, 1)" />
                 </ScrollView>
             </View>
         </ScrollView>
