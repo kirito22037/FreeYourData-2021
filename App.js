@@ -8,8 +8,6 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import ApproveScreen from './app/screens/ApproveScreen';
 import InfoScreen from './app/screens/InfoScreen';
 import FetchDataScreen from './app/screens/FetchDataScreen';
-import Dashboard from './app/screens/Dashboard';
-import InnerCategory from './app/screens/Innercategory';
 import TabNav from './app/screens/tabNav';
 
 export default function App() { 

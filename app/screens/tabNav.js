@@ -9,6 +9,8 @@ import DashboardScreen from './DashboardScreen';
 // import Category from './Category';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import StackCategNavigation from './stackCategScreen';
+import DashboardStackNav from './DashboardStackNav';
+import { Provider as PaperProvider } from 'react-native-paper';
 // import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 export default function TabNav() {
@@ -16,6 +18,7 @@ export default function TabNav() {
     const Tab = createBottomTabNavigator();
 
     return (
+      <PaperProvider>
         <Tab.Navigator
         screenOptions={({route})=>({
             //headerShown: true,
@@ -23,7 +26,7 @@ export default function TabNav() {
             tabBarInactiveTintColor: '#b6b9ba',
             tabBarIcon: ({ focused, color, size }) => {
                 let iconName;
-                if (route.name === "Dashboard") {
+                if (route.name === "DashboardStackNav") {
                     iconName = "dashboard";
                 } else if (route.name === 'Category') {
                     iconName="category";
@@ -44,10 +47,11 @@ export default function TabNav() {
               color: "white"
             }
           })}>
-            <Tab.Screen name="Dashboard" component={DashboardScreen} />
+            <Tab.Screen name="DashboardStackNav" component={DashboardStackNav} options={{ headerShown: false }} />
             <Tab.Screen name="Category" component={StackCategNavigation} options={{ headerShown: false }} />
             <Tab.Screen name="Your Goals" component={GoalScreen} />
             <Tab.Screen name="Profile" component={Profile} />
         </Tab.Navigator>
+      </PaperProvider>
     );
 }
