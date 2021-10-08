@@ -1,5 +1,5 @@
 import React,{useState} from 'react'
-import { StyleSheet, Text, View, Image, TextInput, TouchableOpacity} from 'react-native'
+import { StyleSheet, Text, View, Image, TextInput, TouchableOpacity,Linking} from 'react-native'
 import logo from '../assets/FinBud-icon.png'
 import loader from '../assets/loader-balls.gif';
 import uuid from 'uuid'
@@ -7,6 +7,7 @@ import rs from 'jsrsasign'
 import {CLIENT_API_KEY,SIGNING_PRIVATE_KEY} from '@env'
 import Toast from 'react-native-toast-message';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import {Constants} from 'expo';
 
 
 export default function LoginScreen({navigation}) {
@@ -129,6 +130,7 @@ export default function LoginScreen({navigation}) {
                         text2: 'Approve the request to continue'
                     });
                     console.log("Consent Request Sent Successfully")
+                    Linking.openURL('https://anumati.setu.co/' + res["ConsentHandle"]);
                     navigation.navigate('Approve',{Phone:phone,ConsentHandle:res["ConsentHandle"]}); //Move to Approval Screen
                 }
                 SetLoader(false);

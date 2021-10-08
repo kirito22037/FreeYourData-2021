@@ -66,7 +66,7 @@ export default function GoalDetails({serial,data , closeModal}) {
                 <Text style = {{fontSize: 15 , color: 'black' , marginLeft: 10 , marginBottom: 5}}> Deposit Analysis </Text>
                 <BarChart
                         style={{borderRadius: 15 , alignSelf: 'center'}}
-                        data={BarGraphdata[serial]}
+                        data={BarGraphdata[serial > 2 ? 2 : serial ]}
                         width={Dimensions.get('window').width - 20}
                         height={220}
                         yAxisLabel="₹ "
@@ -81,9 +81,9 @@ export default function GoalDetails({serial,data , closeModal}) {
                     <Text style = {styles.box2}> Amount Deposited{'\n'} ₹ {data.AmountSubmitted} </Text>
                 </View>
                 <View style = {{flex: 1}}>
-                    <Text style = {styles.box2}> Goal Achieved - {goal[serial]} % </Text>
+                    <Text style = {styles.box2}> Goal Achieved - {goal[serial > 2 ? 2 : serial]} % </Text>
                 </View>
-                <TouchableOpacity style={styles.ButtonStyle}><Text style={styles.buttonTextStyle}>Add to this Goal{' >>'}</Text></TouchableOpacity>
+                <TouchableOpacity style={styles.ButtonStyle}><Text style={styles.buttonTextStyle}>Add Money{' >>'}</Text></TouchableOpacity>
             </View>
         </ScrollView>
     )

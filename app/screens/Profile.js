@@ -36,9 +36,9 @@ export default function Profile({navigation}) {
           <Image style={styles.avatar} source={{uri: 'https://bootdey.com/img/Content/avatar/avatar6.png'}}/>
           <View style={styles.body}>
             <View style={styles.bodyContent}>
-              <Text style={styles.name}>Deepak Tiwari</Text>
-              <Text style={styles.info}>+91 6387403422</Text>
-              <Text style={styles.emailinfo}>deepakait5090@gmail.com</Text>
+              <Text style={styles.name}>Ramkrishna Sapan</Text>
+              <Text style={styles.info}>+91 729391923</Text>
+              <Text style={styles.emailinfo}>ram.sapan@gmail.com</Text>
               
               <TouchableOpacity onPress={HandleButtonClick} style={styles.buttonContainer}>
                 {spinloader ? <Image source={loader} style={styles.ButtonLoader}/>:

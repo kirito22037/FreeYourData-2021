@@ -23,15 +23,6 @@ export default function App() {
         <Stack.Screen name="Approve" component={ApproveScreen} options={{ headerShown: false}}/>
         <Stack.Screen name="Fetch" component={FetchDataScreen} options={{ headerShown: false}}/>
         <Stack.Screen name="TabNav" component={TabNav} options={{ headerShown: false }} />
-        {/* <Stack.Screen 
-          name="Dashboard" 
-          component={Dashboard} 
-          options={{
-            headerShown: true,
-            title: "Dashboard"
-          }}
-          /> */}
-        {/* <Stack.Screen name="InnerCategory" component={InnerCategory} options={{ headerShown: true, title: "Category"}}/>  */}
       </Stack.Navigator>
       <Toast ref={(ref) => Toast.setRef(ref)} />
     </NavigationContainer>

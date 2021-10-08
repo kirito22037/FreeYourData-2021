@@ -8,7 +8,7 @@ export default function StackCategNavigation() {
 
     return (
         <Stack.Navigator 
-        initialRouteName="category"
+        initialRouteName="Categories"
         screenOptions={{
             headerStyle: {
                 backgroundColor: "#34a4eb"
@@ -19,7 +19,7 @@ export default function StackCategNavigation() {
               color: 'white'
             },
           }}>
-            <Stack.Screen name="category" component={Category} />
+            <Stack.Screen name="Categories" component={Category} />
             <Stack.Screen name="InnerCategory" component={InnerCategory} options={{ headerShown: true, title: "Category"}}/>
         </Stack.Navigator>
     );
