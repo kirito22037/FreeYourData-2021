@@ -1,6 +1,5 @@
 import React , { useState } from "react";
-import { View , Text , StyleSheet, Dimensions , ScrollView,TouchableOpacity} from 'react-native';
-import Icon  from "react-native-vector-icons/MaterialIcons";
+import { View , Text , StyleSheet, Dimensions , ScrollView,TouchableOpacity , StatusBar} from 'react-native';
 import { BarChart } from 'react-native-chart-kit';
 
 export default function GoalDetails({serial,data , closeModal}) {
@@ -44,16 +43,14 @@ export default function GoalDetails({serial,data , closeModal}) {
     };
 
     return(
-        <ScrollView style = {{flexDirection: 'column' , backgroundColor : '#3AAFA9' , flex : 1 , padding: 10 , overflow: 'scroll'}}>
+        <ScrollView style = {{flexDirection: 'column' , backgroundColor : 'white' , flex : 1, overflow: 'scroll'}}>
+            <StatusBar
+            animated={true}
+            backgroundColor="#05c7f2"
+            />
             <View style = {{flexDirection : 'row'}}>
                 <Text style = {styles.headline}> 
                     {data.GoalName}
-                    {
-                        data.Status === 'Completed' ? 
-                        <Icon name = "verified" size = {30} color = 'green' />
-                        :
-                        <Icon name = "pending-actions" size = {30} color = 'blue' />
-                    }
                 </Text>
             </View>
             <View style = {{ flexDirection: 'column'}}>
@@ -62,13 +59,13 @@ export default function GoalDetails({serial,data , closeModal}) {
                     <Text style = {styles.box}> End Date: {data.endDate} </Text>
                 </View>
                 <Text
-                    style = {{fontSize: 20 , textAlign: 'center' , padding: 10 , backgroundColor: '#3AAFA9' , borderBottomWidth: 2 , borderRadius: 100}}
+                    style = {{fontSize: 20 , textAlign: 'center' , padding: 10 , backgroundColor: '#f29950' , margin: 5 ,  borderRadius: 5}}
                 >Goal Amount - ₹{data.Amount} </Text>
             </View>
-            <View style = {{flexDirection : 'column' , marginTop: 10 , flex: 1}}>
-                <Text style = {{fontSize: 15 , color: 'black'}}> Deposit Analysis </Text>
+            <View style = {{flexDirection : 'column' , marginTop: 7 , flex: 1}}>
+                <Text style = {{fontSize: 15 , color: 'black' , marginLeft: 10 , marginBottom: 5}}> Deposit Analysis </Text>
                 <BarChart
-                        style={{paddingBottom: 5 , marginTop: 10 , borderRadius: 15}}
+                        style={{borderRadius: 15 , alignSelf: 'center'}}
                         data={BarGraphdata[serial]}
                         width={Dimensions.get('window').width - 20}
                         height={220}
@@ -95,33 +92,33 @@ export default function GoalDetails({serial,data , closeModal}) {
 const styles = StyleSheet.create({
     headline: {
         textAlign: 'center',
-        fontSize: 35,
-        backgroundColor: '#B2FDF9',
-        borderTopLeftRadius: 25,
-        borderTopRightRadius: 25,
+        fontSize: 30,
+        backgroundColor: '#05c7f2',
         flex:1,
+        color: 'white',
+        padding: 10
     },
     box: {
-        backgroundColor: '#B2FDF9',
+        backgroundColor: '#f29950',
         marginTop: 10, 
         flex: 1,
         fontSize: 14,
         textAlignVertical: 'center',
         borderRadius: 5,
         textAlign: 'center', 
-        marginLeft: 5, marginRight: 5
+        marginLeft: 5, marginRight: 5,
+        padding: 5
     }, 
     box2: {
         flex: 1 ,
         textAlign: 'center' , 
         padding: 10, 
         fontSize: 15 , 
-        backgroundColor: "#B2FDF9" , 
+        backgroundColor: "#f29950" , 
         color: 'black' , 
         margin: 5,
-        borderBottomLeftRadius: 20,
-        borderTopRightRadius:20,
-        borderBottomWidth: 2
+        borderRadius: 5,
+        // borderBottomWidth: 2
     },
     ButtonStyle:{
         backgroundColor:'#05c7f2',
@@ -129,7 +126,8 @@ const styles = StyleSheet.create({
         alignItems:'center',
         padding:10,
         borderRadius:15,
-        marginTop:25
+        marginTop:25,
+        alignSelf: 'center'
     },
     buttonTextStyle:{
         fontSize:18,

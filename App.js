@@ -8,7 +8,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import ApproveScreen from './app/screens/ApproveScreen';
 import InfoScreen from './app/screens/InfoScreen';
 import FetchDataScreen from './app/screens/FetchDataScreen';
-import Dashboard from './app/screens/Dashboard';
+// import Dashboard from './app/screens/Dashboard';
 import InnerCategory from './app/screens/Innercategory';
 import TabNav from './app/screens/tabNav';
 
@@ -18,7 +18,7 @@ export default function App() {
   
   return(
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Welcome">
+      <Stack.Navigator initialRouteName="TabNav">
         <Stack.Screen name="Welcome" component={WelcomeScreen} options={{ headerShown: false}}/>
         <Stack.Screen name="Info" component={InfoScreen} options={{ headerShown: false}}/>
         <Stack.Screen name="Login" component={LoginScreen} options={{ headerShown: false}}/>
