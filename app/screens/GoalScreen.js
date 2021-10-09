@@ -47,14 +47,6 @@ const formFields = [
 
 export default function GoalScreen({ navigation }) {
 
-    var viewref = [{
-        current:null
-    },{
-        current:null
-    },{
-        current:null
-    }]
-
     const [goalData , setGoalData] = useState(Ongoingdata);
 
     const [goalIndex , setGoalIndex] = useState(0);
@@ -98,13 +90,13 @@ export default function GoalScreen({ navigation }) {
             <Text style={styles.name}>{goalData[index].GoalName}</Text>
             <PieChart style={styles.chart}
                 widthAndHeight={widthAndHeight}
-                series={series[index]}
+                series={series[index > 2 ? 2 : index]}
                 sliceColor={sliceColor}
                 doughnut={true}
                 coverRadius={0.55}
           />
           <Text style={styles.amount}>₹ {goalData[index].AmountSubmitted} out of ₹{goalData[index].Amount}</Text>
-          <TouchableOpacity style={styles.ButtonStyle}><Text style={styles.buttonTextStyle}>Add to this Goal{' >>'}</Text></TouchableOpacity>
+          <TouchableOpacity style={styles.ButtonStyle}><Text style={styles.buttonTextStyle}>Add Money</Text></TouchableOpacity>
         </View>
     );
     };
@@ -119,7 +111,7 @@ export default function GoalScreen({ navigation }) {
             <SafeAreaView style = {styles.cardContainer}>
                 {goalData.map((item,index)=>(
                         <TouchableOpacity onPress = {() => openDetailGoalModal(index)} key = {index.toString()} >
-                            <GestureFlipView width={350} height={370}  ref= {(ref) => (viewref[index].current = ref)}>
+                            <GestureFlipView width={350} height={370}>
                                 {renderBack(index)}
                                 {renderFront(index)}
                             </GestureFlipView>
@@ -289,12 +281,13 @@ const styles = StyleSheet.create({
     },
     ButtonStyle:{
         backgroundColor:'#05c7f2',
-        width:200,
         alignItems:'center',
+        width:155,
         padding:10,
         borderRadius:15,
         position:'absolute',
-        bottom:10
+        bottom:10,
+        
     },
     buttonTextStyle:{
         fontSize:18,

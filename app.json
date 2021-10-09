@@ -27,6 +27,7 @@
     },
     "web": {
       "favicon": "./app/assets/favicon.png"
-    }
+    },
+    "description": "A Fintech App build during Hackathon FREE YOUR DATA hosted by SETU on ACCOUNT-AGGREGATOR framework. This app will let you see your financial life across all your accounts at one place in a consolidated way. This app will categories your expenses and transactions based on where you use the money. For example Travel, Food, Cloth, etc.. Also using this app, you can set Goals for which you want to collect money and steadily complete the goals by depositing money in goals using UPI payments. \nTo use the app, install Expo Go from Play store on your Android Devices and scan the QR Code below! "
   }
 }

@@ -26,7 +26,7 @@ export default function TabNav() {
             tabBarInactiveTintColor: '#b6b9ba',
             tabBarIcon: ({ focused, color, size }) => {
                 let iconName;
-                if (route.name === "DashboardStackNav") {
+                if (route.name === "Accounts") {
                     iconName = "dashboard";
                 } else if (route.name === 'Category') {
                     iconName="category";
@@ -47,7 +47,7 @@ export default function TabNav() {
               color: "white"
             }
           })}>
-            <Tab.Screen name="DashboardStackNav" component={DashboardStackNav} options={{ headerShown: false }} />
+            <Tab.Screen name="Accounts" component={DashboardStackNav} options={{ headerShown: false }} />
             <Tab.Screen name="Category" component={StackCategNavigation} options={{ headerShown: false }} />
             <Tab.Screen name="Your Goals" component={GoalScreen} />
             <Tab.Screen name="Profile" component={Profile} />
